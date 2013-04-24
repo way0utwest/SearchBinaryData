@@ -75,6 +75,21 @@ go
 -- use GUI Wizard
 
 /*
+-- install Office 2010 Filters
+-- http://www.microsoft.com/en-us/download/details.aspx?id=17062
+-- Install Adobe PDF iFilter
+-- http://www.adobe.com/support/downloads/detail.jsp?ftpID=4025
+
+use master
+go
+EXEC sp_fulltext_service 'load_os_resources',1
+go
+EXEC sp_fulltext_service 'verify_signature', 0
+go
+reconfigure with override
+
+
+
 -- create catalog
 CREATE FULLTEXT CATALOG AuthorDrafts_Catalog AS DEFAULT;
 go

@@ -22,6 +22,7 @@ SELECT TOP 100
 , document_id
 , occurrence_count
  FROM sys.dm_fts_index_keywords_by_document( DB_ID('UnstructuredData'), OBJECT_ID('AuthorDrafts'))
+ WHERE display_term > 'aa'
 ;
 go
 
