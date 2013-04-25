@@ -79,6 +79,7 @@ go
 -- http://www.microsoft.com/en-us/download/details.aspx?id=17062
 -- Install Adobe PDF iFilter
 -- http://www.adobe.com/support/downloads/detail.jsp?ftpID=4025
+-- add to system PATH - C:\Program Files\Adobe\Adobe PDF iFilter 9 for 64-bit platforms\bin
 
 use master
 go

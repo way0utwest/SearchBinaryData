@@ -46,13 +46,16 @@ SELECT
  WHERE CONTAINS(*, 'AlwaysOn')
  ;
  go
+-- 6 rows
+
 SELECT
  name
  FROM authordrafts
  WHERE CONTAINS(file_stream, 'Always*')
  ;
- go
- SELECT
+go
+-- More rows
+SELECT
    name
   FROM authordrafts
   WHERE CONTAINS(file_stream, 'shipped')
@@ -67,7 +70,6 @@ SELECT
   ORDER BY NAME
 ;
  go
--- stirred
 
 
 
@@ -177,7 +179,7 @@ SELECT
    a.name
  , b.rank
  FROM authordrafts a
-   INNER JOIN CONTAINSTABLE(dbo.AuthorDrafts, file_stream, 'log and shipping') b
+   INNER JOIN CONTAINSTABLE(dbo.AuthorDrafts, file_stream, 'disaster and log and shipping') b
      ON a.path_locator = b.[key]
  ORDER BY b.RANK DESC
  ;
@@ -202,13 +204,3 @@ go
 
 
 
-
- -- add more properties 
-
-
-
- -- containstable
-
-
-
- -- containstable, isabout
