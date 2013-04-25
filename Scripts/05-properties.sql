@@ -2,14 +2,6 @@
 USE UnstructuredData
 go
 
-
- -- contains, property()
- SELECT
- name
- FROM authordrafts
- WHERE CONTAINS(file_stream, 'Steve and Jones')
- ;
- go
 -- create a search prroperty
 CREATE SEARCH PROPERTY LIST TitleProperties;
 GO
@@ -19,32 +11,39 @@ ALTER SEARCH PROPERTY LIST TitleProperties
       PROPERTY_DESCRIPTION = 'System.Title - Title of the item.' );
 GO
 
-
+-- alter the full text index and add the property list.
 ALTER FULLTEXT INDEX ON dbo.AuthorDrafts
    SET SEARCH PROPERTY LIST TitleProperties
    WITH NO POPULATION
 ;
 GO
 
+-- populate the index.
 ALTER FULLTEXT INDEX ON dbo.AuthorDrafts
    START FULL POPULATION
 ; 
 go
 
+-- query for a title with Steve Jones
 SELECT name
  FROM dbo.AuthorDrafts 
  WHERE CONTAINS(PROPERTY(file_stream,'Title'), 'Steve and Jones'); 
-
+-- query for a single term
 SELECT name
  FROM dbo.AuthorDrafts 
  WHERE CONTAINS(PROPERTY(file_stream,'Title'), 'Steve'); 
 
 
+-- query for author
+SELECT name
+ FROM dbo.AuthorDrafts 
+ WHERE CONTAINS(PROPERTY(file_stream,'Author'), 'Steve'); 
 
 
 
 
 
+-- add author property
 ALTER SEARCH PROPERTY LIST TitleProperties
    ADD 'Author'
    WITH ( PROPERTY_SET_GUID = 'F29F85E0-4FF9-1068-AB91-08002B27B3D9', PROPERTY_INT_ID = 4,
