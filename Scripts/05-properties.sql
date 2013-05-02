@@ -38,6 +38,9 @@ SELECT name
 SELECT name
  FROM dbo.AuthorDrafts 
  WHERE CONTAINS(PROPERTY(file_stream,'Author'), 'Steve'); 
+SELECT name
+ FROM dbo.AuthorDrafts 
+ WHERE CONTAINS(PROPERTY(file_stream,'Author'), 'Beth'); 
 
 
 

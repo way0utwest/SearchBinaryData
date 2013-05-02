@@ -9,7 +9,9 @@ declare @First nvarchar(100)
 ;
 
 SET @First = 'The_Adventures_of_Huckleberry_Finn_NT.pdf';
+-- SET @First = 'stardragon-obooko-scifi0024.pdf';
 SET @Second = 'The_Adventures_of_Tom_Sawyer_NT.pdf';
+-- SET @Second = 'NeptuneCrossing-obooko-scifi0033.pdf'
 
 SELECT @FirstID = path_locator 
  FROM dbo.AuthorDrafts
@@ -22,10 +24,10 @@ SELECT @SecondID = path_locator
  
 
 SELECT 
-   original = @First
- , Match = @Second 
- , keyphrase
+   keyphrase
  , score
+ , original = @First
+ , Match = @Second 
  FROM semanticsimilaritydetailstable(dbo.AuthorDrafts, file_stream, @FirstID, file_stream, @SecondID)
  ORDER BY 
    score DESC
@@ -54,10 +56,10 @@ SELECT @SecondID = path_locator
  
 
 SELECT 
-   original = @First
- , Match = @Second 
- , keyphrase
+   keyphrase
  , score
+ , original = @First
+ , Match = @Second 
  FROM semanticsimilaritydetailstable(dbo.AuthorDrafts, file_stream, @FirstID, file_stream, @SecondID)
  ORDER BY 
    score DESC

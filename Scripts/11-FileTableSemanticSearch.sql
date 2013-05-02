@@ -13,7 +13,6 @@ SELECT name, document_key, keyphrase, score
   , score DESC
  ;
    
--- row 881
 
 
 
